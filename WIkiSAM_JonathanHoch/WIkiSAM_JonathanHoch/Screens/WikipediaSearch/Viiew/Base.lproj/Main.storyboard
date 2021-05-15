@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wikipedia Search View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WikipediaSearchViewController" customModule="WIkiSAM_JonathanHoch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Wikipedia" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-XO-lVc" customClass="RoundedCornersTextField" customModule="WIkiSAM_JonathanHoch" customModuleProvider="target">
+                                <rect key="frame" x="60" y="60" width="294" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="searchFieldDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="2VB-eK-1XV"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="QtG-N2-Ypu"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CWr-y4-v9D">
+                                <rect key="frame" x="16" y="153.5" width="382" height="708.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="edP-ft-exK"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dJ1-f6-cCW"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ktg-Yl-4n8">
+                                <rect key="frame" x="139.5" y="106.5" width="135" height="32"/>
+                                <segments>
+                                    <segment title="Internet"/>
+                                    <segment title="Local"/>
+                                </segments>
+                                <connections>
+                                    <action selector="searchOptionValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="MnA-YP-zHc"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ktg-Yl-4n8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="42K-5L-L3c"/>
+                            <constraint firstItem="CWr-y4-v9D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="CSW-So-lhe"/>
+                            <constraint firstItem="gXK-XO-lVc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Cya-zx-nmx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gXK-XO-lVc" secondAttribute="trailing" constant="60" id="HrJ-mY-7vi"/>
+                            <constraint firstItem="ktg-Yl-4n8" firstAttribute="top" secondItem="gXK-XO-lVc" secondAttribute="bottom" constant="8" id="NJQ-lH-A1E"/>
+                            <constraint firstItem="CWr-y4-v9D" firstAttribute="top" secondItem="ktg-Yl-4n8" secondAttribute="bottom" constant="16" id="aZi-ts-XLe"/>
+                            <constraint firstItem="gXK-XO-lVc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="hRb-k1-gqa"/>
+                            <constraint firstItem="CWr-y4-v9D" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mBb-bh-Xo7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CWr-y4-v9D" secondAttribute="trailing" constant="16" id="wjt-3d-TbI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="geonamesTableView" destination="CWr-y4-v9D" id="GdT-ST-eeP"/>
+                        <outlet property="searchTextField" destination="gXK-XO-lVc" id="Q0r-O2-Mwe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165.21739130434784" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
